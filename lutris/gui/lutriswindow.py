@@ -531,25 +531,11 @@ class LutrisWindow(Gtk.ApplicationWindow):  # pylint: disable=too-many-public-me
         return self.default_view_type
 
     def do_key_press_event(self, event):  # pylint: disable=arguments-differ
-        # XXX: This block of code below is to enable searching on type.
-        # Enabling this feature steals focus from other entries so it needs
-        # some kind of focus detection before enabling library search.
+        if self.search_entry.handle_event(event):
+            self.search_entry.grab_focus_without_selecting()
+            return True
 
-        # Probably not ideal for non-english, but we want to limit
-        # which keys actually start searching
-        if event.keyval == Gdk.KEY_Escape:
-            self.search_entry.set_text("")
-            self.view.grab_focus()
-            return Gtk.ApplicationWindow.do_key_press_event(self, event)
-
-        if (  # pylint: disable=too-many-boolean-expressions
-            not Gdk.KEY_0 <= event.keyval <= Gdk.KEY_z or event.state & Gdk.ModifierType.CONTROL_MASK
-            or event.state & Gdk.ModifierType.SHIFT_MASK or event.state & Gdk.ModifierType.META_MASK
-            or event.state & Gdk.ModifierType.MOD1_MASK or self.search_entry.has_focus()
-        ):
-            return Gtk.ApplicationWindow.do_key_press_event(self, event)
-        self.search_entry.grab_focus()
-        return self.search_entry.do_key_press_event(self.search_entry, event)
+        return Gtk.ApplicationWindow.do_key_press_event(self, event)
 
     def load_icon_type(self):
         """Return the icon style depending on the type of view."""
@@ -706,6 +692,9 @@ class LutrisWindow(Gtk.ApplicationWindow):  # pylint: disable=too-many-public-me
                 if self.game_bar:
                     self.game_bar.destroy()  # for gridview only
             self.view.set_cursor(Gtk.TreePath('0'), None, False)  # needed for both view types
+            self.view.grab_focus()
+        elif event.keyval == Gdk.KEY_Escape:
+            self.search_entry.set_text("")
             self.view.grab_focus()
 
     @GtkTemplate.Callback
