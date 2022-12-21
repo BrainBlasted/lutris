@@ -110,7 +110,7 @@ class GameDialogCommon(ModelessDialog):
         self._add_notebook_tab(info_sw, _("Game info"))
 
     def _get_name_box(self):
-        box = Gtk.Box(spacing=12, margin_right=12, margin_left=12)
+        box = Gtk.Box(spacing=12, margin_end=12, margin_start=12)
         label = Label(_("Name"))
         box.pack_start(label, False, False, 0)
         self.name_entry = Gtk.Entry()
@@ -121,7 +121,7 @@ class GameDialogCommon(ModelessDialog):
         return box
 
     def _get_slug_box(self):
-        slug_box = Gtk.Box(spacing=12, margin_right=12, margin_left=12)
+        slug_box = Gtk.Box(spacing=12, margin_end=12, margin_start=12)
 
         label = Label(_("Identifier"))
         slug_box.pack_start(label, False, False, 0)
@@ -140,7 +140,7 @@ class GameDialogCommon(ModelessDialog):
 
     def _get_directory_box(self):
         """Return widget displaying the location of the game and allowing to move it"""
-        box = Gtk.Box(spacing=12, margin_right=12, margin_left=12, visible=True)
+        box = Gtk.Box(spacing=12, margin_end=12, margin_start=12, visible=True)
         label = Label(_("Directory"))
         box.pack_start(label, False, False, 0)
         self.directory_entry = Gtk.Entry(visible=True)
@@ -153,7 +153,7 @@ class GameDialogCommon(ModelessDialog):
         return box
 
     def _get_runner_box(self):
-        runner_box = Gtk.Box(spacing=12, margin_right=12, margin_left=12)
+        runner_box = Gtk.Box(spacing=12, margin_end=12, margin_start=12)
 
         runner_label = Label(_("Runner"))
         runner_box.pack_start(runner_label, False, False, 0)
@@ -164,7 +164,7 @@ class GameDialogCommon(ModelessDialog):
         return runner_box
 
     def _get_banner_box(self):
-        banner_box = Gtk.Box(spacing=12, margin_right=12, margin_left=12)
+        banner_box = Gtk.Box(spacing=12, margin_end=12, margin_start=12)
 
         label = Label("")
         banner_box.pack_start(label, False, False, 0)
@@ -194,7 +194,7 @@ class GameDialogCommon(ModelessDialog):
         self.image_buttons[image_type] = image_button
 
     def _get_year_box(self):
-        box = Gtk.Box(spacing=12, margin_right=12, margin_left=12)
+        box = Gtk.Box(spacing=12, margin_end=12, margin_start=12)
 
         label = Label(_("Release year"))
         box.pack_start(label, False, False, 0)

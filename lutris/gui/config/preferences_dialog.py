@@ -71,7 +71,7 @@ class PreferencesDialog(GameDialogCommon):
         hbox.stack_id = stack_id
         hbox.set_margin_top(12)
         hbox.set_margin_bottom(12)
-        hbox.set_margin_right(40)
+        hbox.set_margin_end(40)
 
         icon = Gtk.Image.new_from_icon_name(icon_name, Gtk.IconSize.MENU)
         icon.show()
