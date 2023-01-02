@@ -207,7 +207,7 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="receives-default">True</property>
-                <property name="popover">view_menu_widget</property>
+                <property name="menu-model">view_menu</property>
                 <child>
                   <object class="GtkImage">
                     <property name="visible">True</property>
@@ -341,109 +341,46 @@
       </object>
     </child>
   </object>
-  <object class="GtkPopover" id="view_menu_widget">
-    <property name="can-focus">False</property>
-    <property name="relative-to">header_bar</property>
-    <property name="position">bottom</property>
-    <child>
-      <object class="GtkBox">
-        <property name="width-request">160</property>
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="border-width">9</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">3</property>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.show-installed-only</property>
-            <property name="text" translatable="yes">_Installed Games Only</property>
-            <accelerator key="i" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.show-hidden-games</property>
-            <property name="text" translatable="yes">Show _Hidden Games</property>
-            <accelerator key="h" signal="clicked" modifiers="GDK_CONTROL_MASK"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.show-side-panel</property>
-            <property name="text" translatable="yes">Show Side _Panel</property>
-            <accelerator key="0xffffff" signal="clicked"/>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.add-game</property>
-            <property name="text" translatable="yes">Add games</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.preferences</property>
-            <property name="text" translatable="yes">Preferences</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkSeparator">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.open-discord</property>
-            <property name="text" translatable="yes">Discord</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.open-forums</property>
-            <property name="text" translatable="yes">Lutris forums</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.donate</property>
-            <property name="text" translatable="yes">Make a donation</property>
-          </object>
-        </child>
-        <child>
-          <object class="GtkModelButton">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">False</property>
-            <property name="action-name">win.about</property>
-            <property name="text" translatable="yes">About Lutris</property>
-          </object>
-        </child>
-      </object>
-    </child>
-  </object>
+  <menu id="view_menu">
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">_Installed Games Only</attribute>
+        <attribute name="action">win.show-installed-only</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Show _Hidden Games</attribute>
+        <attribute name="action">win.show-hidden-games</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Show Side _Panel</attribute>
+        <attribute name="action">win.show-side-panel</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Add games</attribute>
+        <attribute name="action">win.add-game</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Preferences</attribute>
+        <attribute name="action">win.preferences</attribute>
+      </item>
+    </section>
+    <section>
+      <item>
+        <attribute name="label" translatable="yes">Discord</attribute>
+        <attribute name="action">win.open-discord</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Lutris forums</attribute>
+        <attribute name="action">win.open-forums</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">Make a donation</attribute>
+        <attribute name="action">win.donate</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">About Lutris</attribute>
+        <attribute name="action">win.about</attribute>
+      </item>
+    </section>
+  </menu>
 </interface>
